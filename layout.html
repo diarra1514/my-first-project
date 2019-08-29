@@ -1,0 +1,91 @@
+<html>
+    <head>
+            
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+                {% if title %}
+                <title>Flask blog -{{title}} </title>
+                    {% else %}
+                    <title>Flask blog </title>
+                    {% endif %}
+    </head>
+    <body>
+<div id="app" class="container">
+  <nav class="navbar navbar-expand-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Flask blog<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <ul sclass="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/register') }}">Register</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-nd-8">
+              {% with message = get_flashed_mesages(with_categories=true) %}
+              {% if message %}
+                {% for category, message in message %}
+                  <div class="alert alert-{{ category }}">
+                      {{ message }}
+                  </div>
+                {%endfor%}
+              {%endif%}
+              {% endwith %}
+            {% block content %} {% endblock %} 
+          </div>
+        <div class="col-nd-4">
+          <div class="content-section">
+              <h3>our siderbar</h3>
+              <p class='text-muted'>You can put any information here you'd like.
+                <ul>
+                    <li>lastest post</li>
+                    <li>Announcements</li>
+                    <li> calender</li>
+                    <li>etc</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+        
+        
+            <div class="container">
+                    {% block content %} {% endblock %} 
+   
+            </div>
+             
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+   
+        </body>
+    
+</html>
